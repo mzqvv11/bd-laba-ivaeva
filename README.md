@@ -1,4 +1,5 @@
 #laba1
+
 `
 1) Выберите из таблицы orders все заказы: 
 `
@@ -35,6 +36,7 @@ WHERE products_count > 3
 ![Image](https://i.imgur.com/ZaTRYwC.png)
 
 #laba2
+
 `
 1.  Выберите из таблицы orders 3 самых дешевых заказа за всё время. Данные нужно отсортировать в порядке убывания цены. Отмененные заказы не учитывайте.
 `
@@ -88,7 +90,8 @@ WHERE name = 'IMAC';
 ![Image](https://i.imgur.com/ZaTRYwC.png)
 
 #laba3
-`
+
+```
 CREATE TABLE users (
 	id INT,
 	first_name VARCHAR(50),
@@ -99,4 +102,7 @@ INSERT INTO users (id, first_name, last_name) VALUES
 	(1, 'Дмитрий', 'Иванов'),
 	(2, 'Анатолий', 'Белов'),
 	(3, 'денис', 'Давыдов');
-`
+```
+
+![Image](https://i.imgur.com/pDxdNHq.png)
+![Image](https://i.imgur.com/VXkDbbn.png)
