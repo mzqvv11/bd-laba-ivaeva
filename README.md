@@ -1,3 +1,41 @@
+#laba1
+`
+1) Выберите из таблицы orders все заказы: 
+`
+SELECT * FROM orders
+`
+
+![Image](https://i.imgur.com/jfUJubL.png)
+
+2) Выберите из таблицы orders все заказы кроме новых. У новых заказов status равен "new". Использовать in: 
+`
+SELECT * FROM orders
+WHERE STATUS NOT IN ('new') 
+`
+
+![Image](https://i.imgur.com/jYuAKgE.png)
+
+3) Выберите из таблицы orders все новые и отмененные заказы. У отмененных заказов status равен "cancelled". У новых заказов status равен "new":
+`
+SELECT * FROM orders
+WHERE STATUS IN ('NEW', 'CANCELLED')
+`
+
+![Image](https://i.imgur.com/0adiqVl.png)
+
+4) Выберите из таблицы orders все заказы содержащие более 3 товаров (products_count). Вывести нужно только номер (id) и сумму (sum) заказа:
+`
+SELECT id, SUM
+FROM orders
+WHERE products_count > 3
+`
+
+![Image](https://i.imgur.com/tkyuS2Y.png)
+
+![Image](https://i.imgur.com/ZaTRYwC.png)
+
+#laba2
+`
 1.  Выберите из таблицы orders 3 самых дешевых заказа за всё время. Данные нужно отсортировать в порядке убывания цены. Отмененные заказы не учитывайте.
 `
 SELECT * 
@@ -48,3 +86,17 @@ WHERE name = 'IMAC';
 
 ![Image](https://i.imgur.com/ptRvIop.png)
 ![Image](https://i.imgur.com/ZaTRYwC.png)
+
+#laba3
+`
+CREATE TABLE users (
+	id INT,
+	first_name VARCHAR(50),
+	last_name VARCHAR(50)
+);
+
+INSERT INTO users (id, first_name, last_name) VALUES
+	(1, 'Дмитрий', 'Иванов'),
+	(2, 'Анатолий', 'Белов'),
+	(3, 'денис', 'Давыдов');
+`
