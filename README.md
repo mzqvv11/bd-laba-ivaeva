@@ -166,3 +166,90 @@ id – идентификатор записи в календаре, целое
 user_id – идентификатор пользователя, целое положительное;
 doctor_id – идентификатор доктора, целое положительное;
 visit_date – дата и время визита (точность до секунд).
+
+![Image](https://i.imgur.com/cA7ihuZ.jpeg)
+
+Неверное решение:
+
+```
+
+Create table calendar (
+id int unsigned,
+user_id int unsigned,
+doctor_id int unsigned,
+visit_date datetime);
+Insert into calendar (id, user_id, doctor_id, visit_date)
+Values (1, 1914 , 1, '2017-04-08 12:00:00'),
+(2, 12, 1, '2017-04-08 12:30:00'),
+(3, 4641, 2, '2017-04-09 09:00:00'),
+(4, 4641, 2,'2017-04-09 09:00:00'),
+(5, 15, 2,'2017-04-09 10:00:00')
+
+```
+
+Верное решение:
+
+```
+
+Create table calendar (
+id int unsigned,
+user_id int unsigned,
+doctor_id int unsigned,
+visit_date datetime);
+Insert into calendar (id, user_id, doctor_id, visit_date)
+Values 
+(1, 1914 , 1, '2017-04-08 12:00:00'),
+(2, 12, 1, '2017-04-08 12:30:00'),
+(3, 4641, 2, '2017-04-09 09:00:00'),
+(4, 784, 1,'2017-04-08 13:00:00'),
+(5, 15, 2,'2017-04-09 10:00:00')
+
+```
+
+VARCHAR (65535) - максимум
+
+
+Создайте таблицу users , в которой будут следующие поля:
+
+id — идентификатор, целые положительные числа.
+first_name— имя, строки до 50 символов.
+last_name — фамилия, строки до 60 символов.
+bio — биография, текст до 65000 символов.
+
+![Image](https://i.imgur.com/OMl9opC.jpeg)
+
+Неверное решение:
+
+```
+
+create table users (
+id int (10) unsigned,
+first_name varchar (50) unsigned,
+last_name varchar (60) unsigned,
+bio text
+);
+INSERT INTO users (id, first_name, last_name, bio)
+VALUES
+(1,'Антон','Кулик','С отличием окончил 39 лицей.'),
+(2,'Сергей','Давыдов',''),
+(3,'Дмитрий','Соколов','Профессиональный программист.')
+
+```
+
+Верное решение:
+
+```
+
+create table users (
+id int (10) unsigned,
+first_name varchar (50),
+last_name varchar (60),
+bio text
+);
+INSERT INTO users (id, first_name, last_name, bio)
+VALUES
+(1,'Антон','Кулик','С отличием окончил 39 лицей.'),
+(2,'Сергей','Давыдов',''),
+(3,'Дмитрий','Соколов','Профессиональный программист.')
+
+```
