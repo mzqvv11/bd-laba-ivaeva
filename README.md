@@ -1,3 +1,6 @@
+# root password
+ranka132
+
 # laba1
 
 `
