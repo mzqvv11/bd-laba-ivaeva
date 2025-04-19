@@ -256,3 +256,93 @@ VALUES
 (3,'Дмитрий','Соколов','Профессиональный программист.')
 
 ```
+
+# laba4
+
+
+1) Выберите из таблицы orders 4 самых дорогих заказов за всё время. Данные нужно отсортировать в порядке убывания цены. Отмененные заказы не учитывайте.
+
+```
+SELECT id, user_id, products_count, sum, status
+FROM orders
+WHERE status != 'cancelled'
+ORDER BY sum DESC
+LIMIT 4;
+```
+
+![Image](https://i.imgur.com/RLyVW2d.png)
+
+
+2) Выберите из таблицы products название и цены четырех самых дешевых товаров, которые есть на складе.
+
+```
+SELECT name, price
+FROM products
+WHERE COUNT > 0 
+ORDER BY price ASC
+LIMIT 4;
+```
+
+![Image](https://i.imgur.com/GtSHEoz.png)
+
+
+3) Выберите из таблицы orders три последних заказа (по дате date) стоимостью от 3200 рублей и выше.
+Данные отсортируйте по дате в обратном порядке.
+
+```
+SELECT id, user_id, products_count, sum, status, date
+FROM orders
+WHERE sum >= 3200
+ORDER BY date DESC
+LIMIT 3;
+```
+
+![Image](https://i.imgur.com/J5K9e8A.png)
+
+
+4) Создайте данную таблицу:
+
+![Image](https://i.imgur.com/cjIqDgr.png)
+
+```
+CREATE TABLE products (
+	id INT,
+	NAME VARCHAR(255), 
+	COUNT INT, 
+	price INT
+);
+
+INSERT INTO products (id, NAME, COUNT, price) VALUES
+	 (1, 'Стиральная машина', 5, 10000),
+    (2, 'Холодильник', 0, 10000),
+    (3, 'Микроволновка', 3, 4000),
+    (4, 'Пылесос', 2, 4500),
+    (5, 'Вентилятор', 0, 700),
+    (6, 'Телевизор', 7, 31740),
+    (7, 'Тостер', 2, 2500),
+    (8, 'Принтер', 4, 3000),
+    (9, 'Активные колонки', 1, 2900),
+    (10, 'Ноутбук', 4, 36990),
+    (11, 'Посудомоечная машина', 0, 17800),
+    (12, 'Видеорегистратор', 23, 4000),
+    (13, 'Смартфон', 8, 12300),
+    (14, 'Флешка', 4, 1400),
+    (15, 'Блендер', 0, 5500),
+    (16, 'Газовая плита', 5, 11900),
+    (17, 'Клавиатура', 3, 1800);
+```
+
+![Image](https://i.imgur.com/EZIFD2W.png)
+
+
+5) Из этой таблицы сделать выборку на основе задания: Сайт выводит товары по 5 штук. 
+Выберите из таблицы products товары, которые пользователи увидят на 3 странице каталога при сортировке в порядке возрастания цены (price).
+
+```
+SELECT id, name, count, price
+FROM products
+ORDER BY price ASC
+LIMIT 5 OFFSET 10;
+```
+
+![Image](https://i.imgur.com/A0MHIXA.png) 
