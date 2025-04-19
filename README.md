@@ -346,3 +346,80 @@ LIMIT 5 OFFSET 10;
 ```
 
 ![Image](https://i.imgur.com/A0MHIXA.png) 
+
+```
+
+# zadachi
+
+```
+1) Создайте таблицу articles для хранения данных о статьях. В таблице должны быть следующие поля:
+id — идентификатор, целое положительное, NULL запрещен
+name — название статьи, строка до 80 символов.text — текст статьи.
+state — статус статьи. Поле из 3 вариантов: draft (черновик), correction (корректура), public (опубликована).Добавьте 3 записи так, чтобы получалась таблица ниже:
+```
+
+![Image](https://i.imgur.com/JWcczMy.jpeg)
+
+```
+Create table articles (
+id int unsigned not null,
+name varchar (80),
+text text,
+state enum('draft', 'correction', 'public')
+);
+insert into articles (id, name, text, state)
+VALUES
+(1, 'Новое в Python 3.6', '', 'draft'),
+(2, 'Оптимизация SQL запросов', 'При больших объемах данных ...', 'correction'),
+(3, 'Транзакции в MySQL', 'По долгу службы мне приходится ...', 'public')
+```
+
+Когда можно выбрать 1 вариант - используем ENUM
+когда можно выбрать несколько вариантов - используем SET
+
+```
+
+```
+2) Создайте таблицу rooms для хранения номеров в отеле:
+
+id — идентификатор, целое положительное.
+number — номер комнаты, целое положительное. Всего в отеле 107 комнат. NULL запрещен.
+beds — количество спальных мест. Выбор из 1+1, 2+1, 2+2. Можно выбрать только один вариант. NULL запрещен.
+additional — дополнительные удобства в номере. Можно выбрать несколько вариантов из списка: conditioner, bar, fridge и wifi.
+Добавьте 3 записи так, чтобы получалась таблица ниже:
+```
+
+![Image](https://i.imgur.com/aCOoHpJ.jpeg)
+
+```
+create table rooms (
+id int unsigned not null,
+number tinyint unsigned not null,
+beds enum('1+1','2+1','2+2') not null,
+additional set('conditioner','bar','fridge','wifi')
+);
+insert into rooms (id,number,beds,additional)
+values
+(1,10,'1+1','conditioner,bar,wifi'),
+(2,12,'2+1',''),
+(3,24,'2+2','fridge,bar,wifi')
+```
+
+```
+3) Выберите из таблицы products название, цену и страны всех товаров из России и Белоруссии (в поле country обязательно должна присутствовать или Россия, или Белоруссия).
+Выбирайте только товары, у которых задана категория.
+Данные отсортируйте по цене в обратном порядке.
+
+Поле country относится к типу SET('RU', 'UA', 'BY', 'KZ') NOT NULL.
+```
+
+![Image](https://i.imgur.com/KFOZKXS.jpeg)
+```
+
+```
+SELECT name,price,country FROM products 
+WHERE (find_in_set ('RU',country) OR find_in_set ('BY',country)) AND category_id IS NOT NULL ORDER BY price DESC
+```
+
+```
+
