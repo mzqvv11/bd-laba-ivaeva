@@ -466,3 +466,43 @@ price — цена типа DECIMAL с 10 знаками, 2 из которых 
 ```
 
 ```
+
+# zadachi
+
+1) Создайте таблицу users с со следующими полями:
+id — идентификатор, целое положительное, первичный ключ без автоинкремента, NULL запрещен.
+first_name — имя пользователя, строка до 50 символов.
+last_name — фамилия пользователя, строка до 50 символов.
+birthday — дата рождения. Пользователь может не указать день рождения и тогда в поле нужно хранить NULL.
+Добавьте 3 записи так, чтобы получалась таблица ниже:
+
+![Image](https://i.imgur.com/BhgsSul.jpeg)
+
+```
+CREATE TABLE users (
+id INT(10)UNSIGNED NOT NULL PRIMARY KEY,
+first_name VARCHAR (50) NULL,
+last_name VARCHAR (50) NULL,
+birthday DATE NULL );
+INSERT INTO users (id, first_name, last_name, birthday)
+VALUES (1,'Дмитрий','Иванов',NULL),
+(2,'Анатолий','Белый',NULL),
+(3,'Денис','Давыдов','1995-09-08');
+```
+
+2) Создайте таблицу orders с автоинкрементальным первичным ключом id, полем state для хранения статуса заказа и полем amount для хранения суммы заказа. Статус заказа умещается в строку длиной 8 символов, а сумма заказа является денежным типом до 1 млн. с двумя знаками после десятичной точки.
+Добавьте 3 записи так, чтобы получалась таблица ниже:
+
+![Image](https://i.imgur.com/sQMY1Fd.jpeg)
+
+```
+create table orders (
+id int unsigned not null primary key auto_increment,
+state varchar (8),
+amount decimal (8,2)
+);
+insert into orders (state, amount)
+values ('new', 1000.50),
+('new', 3400.10),
+('delivery', 7300.00)
+```
