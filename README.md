@@ -328,11 +328,9 @@ SELECT id, name, count, price
 FROM products
 ORDER BY price ASC
 LIMIT 5 OFFSET 10;
-`
+```
 
 ![Image](https://i.imgur.com/A0MHIXA.png) 
-
-```
 
 # zadachi
 
