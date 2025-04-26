@@ -1,5 +1,5 @@
 # root password
-ranka132
+Ranka132!
 
 # laba1
 
